@@ -1,0 +1,50 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        int count = 0;
+        stack<char> checker;
+        bool flag = true;
+
+        for (char c: s) {
+            if (count < 0) {
+                flag = false;
+                break;
+            }
+            if (c == '(' || c == '{' || c == '[') {
+                count++;
+                if (c == '(') {
+                    checker.push('(');
+                } else if (c == '{') {
+                    checker.push('{');
+                } else {
+                    checker.push('[');
+                }
+            } else if (c == ')' || c == '}' || c == ']') {
+                count--;
+                if (checker.empty()) {
+                    flag = false;
+                    break;
+                }
+                if (c == ')' && checker.top() == '(') {
+                    checker.pop();
+                    continue;
+                } else if (c == '}' && checker.top() == '{') {
+                    checker.pop();
+                    continue;
+                } else if (c == ']' && checker.top() == '[') {
+                    checker.pop();
+                    continue;
+                } else {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+
+        if (flag == true && count == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+};
