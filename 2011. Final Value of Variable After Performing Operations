@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int finalValueAfterOperations(vector<string>& operations) {
+        int count = 0;
+        
+        for (auto o: operations) {
+            if (o == "X++" || o == "++X") count++;
+            if (o == "X--" || o == "--X") count--;
+        }
+
+        return count;
+    }
+};
