@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int balancedStringSplit(string s) {
+        int count = 0;
+        int tracker = 0;
+
+        for (char c: s) {
+            if (c == 'R') tracker++;
+            if (c == 'L') tracker--;
+
+            if (tracker == 0) count++;
+        }
+
+        return count;
+    }
+};
