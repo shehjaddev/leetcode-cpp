@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        map<int, int> mp;
+
+        for (int n: nums) mp[n]++;
+
+        int max = 0;
+        int key = 0;
+
+        for (auto m: mp) {
+            if (m.second > max) {
+                max = m.second;
+                key = m.first;
+            }
+        }
+
+        return key;
+    }
+};
