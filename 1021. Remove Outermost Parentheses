@@ -1,0 +1,22 @@
+class Solution {
+public:
+    string removeOuterParentheses(string s) {
+        string ans = "";
+        stack<char> stk;
+        int count = 0;
+
+        for (char c: s) {
+            if (c == '(') {
+                stk.push(c);
+                count++;
+                if (count > 1) ans += c;
+            } else {
+                stk.pop();
+                if (count > 1) ans += c;
+                count--;
+            }
+        }
+
+        return ans;
+    }
+};
