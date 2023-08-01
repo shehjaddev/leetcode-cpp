@@ -1,0 +1,16 @@
+// Using linear search
+class Solution {
+public:
+    int maximumCount(vector<int>& nums) {
+        int positive = 0;
+        int negative = 0;
+
+        for (int n: nums) {
+            if (n > 0) positive++;
+            if (n < 0) negative++;
+        }
+
+        if (positive > negative) return positive;
+        else return negative;
+    }
+};
