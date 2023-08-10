@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int findCenter(vector<vector<int>>& edges) {
+        map<int, int> mp;
+
+        for (auto g: edges) {
+            for (int e: g) {
+                mp[e]++;
+            }
+        }
+
+        for (auto pair: mp) {
+            if (pair.second > 1) return pair.first;
+        }
+
+        return -1;
+    }
+};
