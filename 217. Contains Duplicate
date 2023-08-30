@@ -1,6 +1,24 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
+        bool flag = false;
+        map<int, bool> mp;
+
+        for (int n: nums) {
+            if (mp[n] == true) {
+                flag = true;
+                break;
+            }
+            mp[n] = true;
+        }
+
+        return flag;
+    }
+};
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
         int n1 = nums.size();
 
         set<int> s;
