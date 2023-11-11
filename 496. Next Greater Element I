@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> ans;
+
+        for (int n1: nums1) {
+            bool flag = false;
+            bool found = false;
+            for (int n2: nums2) {
+                if (n1 == n2) {
+                    flag = true;
+                }
+                if (flag) {
+                    cout << n2 << endl;
+                    if (n2 > n1) {
+                        ans.push_back(n2);
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found) ans.push_back(-1);
+        }
+        return ans;
+    }
+};
