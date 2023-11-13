@@ -1,0 +1,38 @@
+class Solution {
+public:
+    string say(string str) {
+        vector<pair<char, int>> v;
+        char current;
+        for (char each: str) {
+            if (each == current) {
+                pair<char, int> pr = v.back();
+                v.pop_back();
+                pr.second++;
+                v.push_back(pr);
+            } else {
+                current = each;
+                pair<char, int> pr;
+                pr.first = each;
+                pr.second = 1;
+                v.push_back(pr);
+            }
+        }
+
+        string result = "";
+        for (auto each: v) {
+            result += to_string(each.second);
+            result += each.first;
+        }
+
+        return result;
+    }
+
+    string countAndSay(int n) {
+        string str = "1";
+        n--;
+
+        while (n--) str = say(str);
+
+        return str;
+    }
+};
