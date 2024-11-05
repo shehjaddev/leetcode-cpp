@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int chalkReplacer(vector<int>& chalk, int k) {
+        int n = 0;
+        long long int total = 0;
+
+        for (int each: chalk) total += each;
+
+        k %= total;
+
+        while (chalk[n] <= k) {
+            k -= chalk[n];
+            n++;
+        }
+
+        return n;
+    }
+};
